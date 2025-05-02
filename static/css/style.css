@@ -1,0 +1,313 @@
+/* static/css/style.css */
+
+/* Подключение шрифта Aptos */
+@font-face {
+  font-family: 'Aptos';
+  src: url('../fonts/aptos.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Сброс */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Основной фон и шрифт */
+body {
+  background: #121212;
+  color: #E5EAEA;
+  font-family: 'Aptos', -apple-system, BlinkMacSystemFont,
+               "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* iOS-подобная шапка */
+.ios-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 50px;
+  padding: 0 16px;
+  background: rgba(28,28,30,0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(58,58,60,0.5);
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+}
+.ios-header nav {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.ios-header nav a {
+  margin-right: 20px;
+  font-size: 17px;
+  font-weight: 500;
+  color: #0A84FF;
+  text-decoration: none;
+  padding: 6px 8px;
+}
+.ios-header nav a.logout-btn {
+  margin-left: auto;
+  background: #FF453A;
+  color: #121212;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Контейнер под шапкой */
+.container {
+  padding: 60px 15px 15px;
+}
+
+/* Карточки */
+.card, .login-card {
+  background: #1C1C1E;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  max-width: 400px;
+  margin: 0 auto 20px;
+}
+.wide-card {
+  max-width: none;
+  text-align: center;
+}
+.card.proxy-card {
+  max-width: 600px;
+}
+
+/* Заголовки */
+h1, h2 {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 15px;
+  color: #E5EAEA;
+}
+
+/* Поля ввода логина/пароля и кнопки наследуют Aptos */
+input[type=text],
+input[type=password],
+button,
+.load-more {
+  font-family: 'Aptos', -apple-system, BlinkMacSystemFont,
+               "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Поля логина/пароля */
+input[type=text],
+input[type=password] {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: #2C2C2E;
+  color: #E5EAEA;
+  font-size: 17px;
+}
+
+/* Кнопки */
+button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  font-size: 17px;
+  border: none;
+  border-radius: 10px;
+  background: #0A84FF;
+  color: #121212;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.load-more {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 17px;
+  border-radius: 10px;
+  background: #0A84FF;
+  color: #121212;
+  text-decoration: none;
+  cursor: pointer;
+  margin: 15px auto;
+}
+
+/* Стили для поля загрузки файла (file-wrapper) */
+.file-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 15px;
+}
+.file-wrapper label {
+  display: block;
+  background: #2C2C2E;
+  color: #E5EAEA;
+  border: 1px solid #3A3A3C;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  font-family: 'Aptos', sans-serif;
+}
+.file-wrapper input[type=file] {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Текстовое поле прокси и debug — системный шрифт */
+textarea,
+input[type=file] {
+  font-family: initial;
+  resize: none;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #3A3A3C;
+  border-radius: 10px;
+  background: #2C2C2E;
+  color: #E5EAEA;
+  font-size: 17px;
+  margin-bottom: 15px;
+}
+
+/* Отладочное поле */
+.debug {
+  background: #2C2C2E;
+  color: #E5EAEA;
+  border: 1px solid #3A3A3C;
+  border-radius: 10px;
+  width: 100%;
+  padding: 10px;
+  font-family: initial;
+  margin-top: 10px;
+}
+
+/* Таблица */
+.table-responsive {
+  overflow-x: auto;
+  margin-bottom: 15px;
+}
+.ios-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.ios-table thead th {
+  background: #2C2C2E;
+  font-weight: 600;
+  color: #E5EAEA;
+}
+.ios-table th,
+.ios-table td {
+  padding: 12px;
+  font-size: 17px;
+  color: #E5EAEA;
+  border-bottom: 1px solid #3A3A3C;
+  background: #1C1C1E;
+  text-align: left;
+}
+.ios-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Иконки копирования/удаления */
+.copy-icon,
+.del-btn img {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+/* Счётчик оставшихся прокси */
+.proxy-count {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+/* Поле результата proxy */
+.proxy-result {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 20px;
+  padding: 15px;
+  background: #2C2C2E;
+  border: 1px solid #3A3A3C;
+  border-radius: 12px;
+  text-align: center;
+}
+.proxy-text {
+  font-family: monospace;
+  font-size: 18px;
+  margin-bottom: 10px;
+  white-space: nowrap;
+  color: #E5EAEA;
+}
+
+/* Прогресс-бар */
+.progress-container {
+  width: 100%;
+  background: #3A3A3C;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 6px;
+  margin-bottom: 15px;
+  display: none;
+}
+.progress-bar {
+  width: 0;
+  height: 100%;
+  background: #0A84FF;
+  transition: width 3s ease-out;
+}
+
+/* Разделитель */
+.or-separator {
+  text-align: center;
+  margin: 10px 0;
+  color: #8E8E93;
+}
+
+/* Flash-сообщения */
+.flash-list {
+  list-style: none;
+  margin-bottom: 15px;
+}
+.flash.error {
+  color: #FF453A;
+  text-align: center;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 600px) {
+  .ios-header {
+    padding: 0 10px;
+    height: 44px;
+  }
+  .ios-header nav a,
+  .logout-btn {
+    padding: 4px 6px;
+    font-size: 15px;
+  }
+  .container {
+    padding: 50px 10px 10px;
+  }
+  .card,
+  .wide-card,
+  .card.proxy-card {
+    padding: 15px;
+  }
+  .ios-table th,
+  .ios-table td {
+    padding: 8px;
+    font-size: 15px;
+  }
+}

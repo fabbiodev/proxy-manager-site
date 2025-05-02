@@ -1,0 +1,48 @@
+<!-- templates/proxy.html -->
+{% extends 'base.html' %}
+{% block content %}
+<div class="card wide-card">
+  <h2>Список прокси (страница {{ page }})</h2>
+  <p class="proxy-count">Осталось прокси: {{ total }}</p>
+  <div class="table-responsive">
+    <table class="ios-table">
+      <thead>
+        <tr>
+          <th>IP</th>
+          <th>Port</th>
+          <th>Login</th>
+          <th>Password</th>
+          <th>Действия</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for id, ip, port, login, password in rows %}
+        <tr>
+          <td>{{ ip }}</td>
+          <td>{{ port }}</td>
+          <td>{{ login }}</td>
+          <td>{{ password }}</td>
+          <td class="actions">
+            <!-- Правильный вызов url_for для статических файлов -->
+            <img src="{{ url_for('static', filename='img/copy.png') }}"
+                 class="copy-icon"
+                 data-text="{{ ip }}:{{ port }}:{{ login }}:{{ password }}"
+                 alt="Copy" />
+            <img src="{{ url_for('static', filename='img/delete.png') }}"
+                 class="copy-icon"
+                 alt="Delete"
+                 onclick="document.getElementById('del-form-{{ id }}').submit()" />
+            <form id="del-form-{{ id }}" method="POST" action="{{ url_for('delete', pid=id) }}" class="inline">
+              <input type="hidden" name="page" value="{{ page }}">
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% if more %}
+    <a href="{{ url_for('proxy', page=page+1) }}" class="load-more">Загрузить ещё</a>
+  {% endif %}
+</div>
+{% endblock %}

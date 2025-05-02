@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card proxy-card">
+  <h2>Получить прокси</h2>
+  <p class="proxy-count">Осталось прокси: {{ total }}</p>
+
+  <!-- Прогресс-бар -->
+  <div id="progress-container" class="progress-container">
+    <div id="progress-bar" class="progress-bar"></div>
+  </div>
+
+  <form id="getProxyForm" method="POST">
+    <button type="submit">Получить прокси</button>
+  </form>
+
+  {% if message %}
+    <p class="warning">{{ message }}</p>
+  {% endif %}
+
+  {% if proxy_str %}
+  <div class="proxy-result">
+    <p class="proxy-text">{{ proxy_str }}</p>
+    <img src="{{ url_for('static', filename='img/copy.png') }}"
+         class="copy-icon"
+         data-text="{{ proxy_str }}"
+         alt="Copy" />
+    <p class="warning">Внимание: при обновлении страницы прокси пропадёт.</p>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

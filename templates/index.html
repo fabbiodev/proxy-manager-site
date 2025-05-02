@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="login-card">
+  <h1>Авторизация</h1>
+  <form id="loginForm" method="POST" novalidate>
+    <input type="text" name="username" placeholder="Логин" required>
+    <input type="password" name="password" placeholder="Пароль" required>
+    <button type="submit">Войти</button>
+    {% if error %}<p class="error">{{ error }}</p>{% endif %}
+  </form>
+</div>
+{% endblock %}

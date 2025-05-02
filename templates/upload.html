@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+  <h2>Загрузка прокси</h2>
+
+  <form id="uploadForm" method="POST" enctype="multipart/form-data" novalidate>
+    <!-- Стилированный файл-инпут -->
+    <div class="file-wrapper">
+      <label id="file-label" for="fileInput">Выберите .txt файл</label>
+      <input id="fileInput" type="file" name="file" accept=".txt">
+    </div>
+
+    <textarea name="text" placeholder="ip:port:login:password" rows="6"></textarea>
+
+    <button type="submit">Загрузить</button>
+  </form>
+
+  {% if debug %}
+    <textarea class="debug" readonly rows="10">{{ debug }}</textarea>
+  {% endif %}
+</div>
+{% endblock %}

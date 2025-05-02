@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png"
+        href="{{ url_for('static', filename='img/icon.png') }}">
+  <link rel="shortcut icon" type="image/png"
+        href="{{ url_for('static', filename='img/icon.png') }}">
+
+  <!-- Стили и скрипты -->
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+  <script src="{{ url_for('static',filename='js/main.js') }}" defer></script>
+
+  <title>{{ title or "Чайхана прокси" }}</title>
+</head>
+<body>
+  <header class="ios-header">
+    <nav>
+      {% if session.get('user') == 'admin' %}
+        <a href="{{ url_for('proxy', page=1) }}">Главная</a>
+        <a href="{{ url_for('upload') }}">Загрузить</a>
+      {% endif %}
+      {% if session.get('user') %}
+        <a href="https://onlinesim.io/v2/numbers/" target="_blank">Купить номер</a>
+        <a href="{{ url_for('get_proxy') }}">Получить прокси</a>
+        <a href="{{ url_for('logout') }}" class="logout-btn">Выход</a>
+      {% endif %}
+    </nav>
+  </header>
+
+  <div class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul class="flash-list">
+        {% for cat,msg in messages %}
+          <li class="flash {{cat}}">{{ msg }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>
