@@ -54,8 +54,8 @@ def init_dbs():
         password TEXT NOT NULL
       )
     ''')
-    u.execute('INSERT OR IGNORE INTO users(username,password) VALUES(?,?)', ('user','samokat'))
-    u.execute('INSERT OR IGNORE INTO users(username,password) VALUES(?,?)', ('admin','bebra'))
+    u.execute('INSERT OR IGNORE INTO users(username,password) VALUES(?,?)', ('user','user'))
+    u.execute('INSERT OR IGNORE INTO users(username,password) VALUES(?,?)', ('admin','admin'))
     u.commit(); u.close()
 
     # proxies.db
